@@ -1,13 +1,18 @@
+import { HomePage } from './pages/home'
+import { Layout } from './template'
 
+// import React from 'react'
+// import NomeDoComponente from './pages/home'
 
 function App() {
-  
-
   return (
     <>
-      <h1>Hello</h1>
+      <Layout>
+        <HomePage />
+      </Layout>
     </>
   )
 }
+
 
 export default App
