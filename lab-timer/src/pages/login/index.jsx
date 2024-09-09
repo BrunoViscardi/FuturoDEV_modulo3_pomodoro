@@ -29,48 +29,61 @@ export function LoginPage() {
         const usuario = usuarios.find(user => user.email == email && user.senha == senha);
 
         if (usuario) {
-            setAuth ("true")
+            setAuth("true")
             localStorage.setItem("isAutenticado", auth)
-            window.location.href = "/" 
+            window.location.href = "/"
             setUsuarioLogin({ ...usuarioLogin, msgErro: "false" })
 
         } else {
-            setAuth ("false")
+            setAuth("false")
             localStorage.setItem("isAutenticado", auth)
             setUsuarioLogin({ ...usuarioLogin, msgErro: "true" })
         }
     }
 
     return (
+
         <>
-            <div className="loginContainer">
-                <div className="loginConteudo">
-                    <form className="formLogin">
-                        <div className="campoLogin">
-                            <label htmlFor="emailLogin">Email</label>
-                            <input className="inputLogin" type="email" placeholder="digite seu email"
-                                onChange={(e) => setUsuarioLogin({ ...usuarioLogin, email: e.target.value })}
-                            />
+            <div className="conteiner--template-login">
 
+
+
+                <div className="conteudo--template-login">
+
+
+                    <div className="loginContainer">
+                        <div className="loginConteudo">
+                            <form className="formLogin">
+                                <div className="campoLogin">
+                                    <label htmlFor="emailLogin">Email</label>
+                                    <input className="inputLogin" type="email" placeholder="digite seu email"
+                                        onChange={(e) => setUsuarioLogin({ ...usuarioLogin, email: e.target.value })}
+                                    />
+
+                                </div>
+
+                                <div className="campoLogin">
+                                    <label htmlFor="senhaLogin">Senha</label>
+                                    <input className="inputLogin" type="password" placeholder="digite sua senha"
+                                        onChange={(e) => setUsuarioLogin({ ...usuarioLogin, senha: e.target.value })}
+                                    />
+                                </div>
+
+                                {usuarioLogin.msgErro == "true" && <div className="erroLogin">Usuário ou senha inválidos</div>}
+
+
+                                <Button type='button' onClick={() => realizarLogin(usuarioLogin)}> Entrar </Button>
+
+
+                            </form>
                         </div>
 
-                        <div className="campoLogin">
-                            <label htmlFor="senhaLogin">Senha</label>
-                            <input className="inputLogin" type="password" placeholder="digite sua senha"
-                                onChange={(e) => setUsuarioLogin({ ...usuarioLogin, senha: e.target.value })}
-                            />
-                        </div>
-
-                        {usuarioLogin.msgErro == "true" && <div className="erroLogin">Usuário ou senha inválidos</div>}
-
-
-                        <Button type='button' onClick={() => realizarLogin(usuarioLogin)}> Entrar </Button>
-
-
-                    </form>
+                    </div>
                 </div>
-
             </div>
+
+
+
 
 
         </>
