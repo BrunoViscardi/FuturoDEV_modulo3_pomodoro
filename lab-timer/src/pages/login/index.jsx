@@ -1,5 +1,5 @@
 import { Button } from "../../components/button";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { UsuarioContext } from "../../contexts/usuarios"
 
 import './login.css'
@@ -15,6 +15,13 @@ export function LoginPage() {
     })
 
 
+    const [auth, setAuth] = useState("false")
+
+    useEffect(() => {
+        localStorage.setItem("isAutenticado", auth);
+    }, [auth]);
+
+
     function realizarLogin(usuarioLogin) {
         const email = usuarioLogin.email;
         const senha = usuarioLogin.senha;
@@ -22,11 +29,14 @@ export function LoginPage() {
         const usuario = usuarios.find(user => user.email == email && user.senha == senha);
 
         if (usuario) {
-            localStorage.setItem("isAutenticado", true)
+            setAuth ("true")
+            localStorage.setItem("isAutenticado", auth)
             window.location.href = "/" 
             setUsuarioLogin({ ...usuarioLogin, msgErro: "false" })
 
         } else {
+            setAuth ("false")
+            localStorage.setItem("isAutenticado", auth)
             setUsuarioLogin({ ...usuarioLogin, msgErro: "true" })
         }
     }
