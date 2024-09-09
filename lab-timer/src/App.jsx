@@ -1,12 +1,15 @@
 import { RouterProvider } from 'react-router-dom'
 import { routes } from './routes'
 import { CycleProvider } from './contexts/cycle'
+import { UsuarioContextProvider } from './contexts/usuarios'
 
 function App() {
   return (
-    <CycleProvider>
-      <RouterProvider router={routes} />
-    </CycleProvider>
+    <UsuarioContextProvider>
+      <CycleProvider>
+        <RouterProvider router={routes} />
+      </CycleProvider>
+    </UsuarioContextProvider>
   )
 }
 // JSX

@@ -1,0 +1,43 @@
+.loginContainer {
+    flex: 1;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    justify-items: right;
+}
+
+.loginConteudo {
+    position: absolute;
+    height: 100%;
+    display: flex;
+    width: 50%;
+    right: 0;
+    align-items: center;
+}
+
+.formLogin {
+    font-size: 16px;
+    width: 100%;
+    gap: 20px;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+}
+
+
+.campoLogin {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.inputLogin{
+    background-color: transparent;
+    color: var(--text);
+    height: 40px;
+    width: auto;
+    border-radius: 8px;
+    padding: 0 16px;
+    font-size: 16px;
+}
